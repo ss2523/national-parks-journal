@@ -5,26 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Google Search Console Verification Meta Tag -->
-    <meta name="google-site-verification" content="Apib7-x98H0j5cPqHWwSMm6dNU4GmODRoqxLiDzdx9I" />
+    <meta name="google-site-verification" content="WyCtfOu6CDSGKOzKdGKz4c9PpDAYyCZuak6LQzTIvzA" />
 
     <!-- SEO Meta Tags for Google Search -->
-    <title>Unnamed Peaks & Wild Trails | Glacier, Grand Teton & Yellowstone Journal</title>
-    <meta name="description" content="A 10-day travel journal exploring Glacier, Grand Teton, and Yellowstone National Parks. Read about wild trails, scenic views, and epic mountain adventures.">
+    <title>Unnamed Peaks & Wild Trails | 10-Day Mountain Expedition</title>
+    <meta name="description" content="An immersive 10-day travel journal exploring Glacier, Grand Teton, and Yellowstone National Parks. Wild trails, mountain passes, and backcountry stories.">
     <meta name="keywords" content="Glacier National Park, Grand Teton, Yellowstone, Travel Journal, 10 Day Itinerary, Going-to-the-Sun Road, Jenny Lake, Grand Prismatic">
     <meta name="author" content="Wild Trails Journal">
     <meta name="robots" content="index, follow">
 
-    <!-- Open Graph Meta Tags (for Facebook, WhatsApp, LinkedIn, iMessage) -->
+    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Unnamed Peaks & Wild Trails — A 10-Day Mountain Journey">
-    <meta property="og:description" content="Explore a heartwarming 10-day travel journal through Glacier, Grand Teton, and Yellowstone National Parks.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:description" content="An immersive 10-day travel journal through Glacier, Grand Teton, and Yellowstone National Parks.">
     <meta property="og:type" content="article">
 
-    <!-- Twitter Card Data -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Unnamed Peaks & Wild Trails">
-    <meta name="twitter:description" content="A 10-day travel journal through Glacier, Grand Teton, and Yellowstone.">
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
 
     <!-- Structured Data for Google (Schema.org JSON-LD) -->
     <script type="application/ld+json">
@@ -44,21 +42,21 @@
     }
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
-    
     <style>
         :root {
-            --bg-color: #fcfbf7;
-            --card-bg: #ffffff;
-            --text-main: #2b2d2f;
-            --text-muted: #5a626a;
-            --accent-forest: #2d5a27;
-            --accent-terracotta: #c86d51;
-            --accent-gold: #d99b26;
-            --border-color: #eae7dc;
-            --shadow: 0 10px 30px rgba(0,0,0,0.05);
+            --bg-main: #0f1412;
+            --bg-card: rgba(23, 31, 27, 0.75);
+            --bg-card-hover: rgba(30, 41, 35, 0.85);
+            --border-glow: rgba(184, 150, 92, 0.25);
+            --text-primary: #f2ebd9;
+            --text-secondary: #a3b2a4;
+            --accent-gold: #d4af37;
+            --accent-gold-light: #f3e5ab;
+            --accent-terracotta: #d97757;
+            --accent-emerald: #2e5a44;
+            --accent-forest: #1b3b2b;
+            --shadow-glow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -69,112 +67,244 @@
 
         html {
             scroll-behavior: smooth;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            line-height: 1.8;
-            font-size: 1.15rem;
-            -webkit-font-smoothing: antialiased;
+            line-height: 1.85;
+            font-size: 1.1rem;
+            overflow-x: hidden;
+            background: 
+                radial-gradient(circle at 15% 15%, rgba(46, 90, 68, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 85% 65%, rgba(212, 175, 55, 0.08) 0%, transparent 45%),
+                var(--bg-main);
+            background-attachment: fixed;
         }
 
+        /* Reading Progress Bar */
+        #progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            z-index: 1000;
+        }
+
+        #progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent-terracotta), var(--accent-gold));
+            box-shadow: 0 0 10px var(--accent-gold);
+        }
+
+        /* Hero Header */
         header {
+            position: relative;
+            padding: 140px 20px 100px;
             text-align: center;
-            padding: 110px 20px 90px;
-            background: linear-gradient(180deg, #f4efe6 0%, var(--bg-color) 100%);
-            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(180deg, rgba(15, 20, 18, 0.4) 0%, var(--bg-main) 100%);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
         }
 
-        .header-tag {
-            font-size: 0.95rem;
-            letter-spacing: 3px;
+        .hero-badge {
+            display: inline-block;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--accent-terracotta);
-            font-weight: 700;
-            margin-bottom: 15px;
+            color: var(--accent-gold);
+            padding: 6px 18px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50px;
+            background: rgba(212, 175, 55, 0.05);
+            backdrop-filter: blur(5px);
+            margin-bottom: 25px;
         }
 
         h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.8rem;
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.8rem, 6vw, 4.8rem);
             font-weight: 800;
-            color: var(--accent-forest);
-            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 30%, var(--accent-gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
             margin-bottom: 20px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .header-sub {
-            font-size: 1.3rem;
-            color: var(--text-muted);
-            font-style: italic;
-        }
-
-        .container {
-            max-width: 880px;
-            margin: 0 auto;
-            padding: 60px 20px 100px;
-        }
-
-        .act-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.4rem;
-            color: var(--accent-forest);
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            color: var(--text-secondary);
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
             text-align: center;
-            margin: 90px 0 40px;
+        }
+
+        .stat-value {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+        }
+
+        /* Sticky Navigation Bar */
+        .nav-sticky {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            max-width: 600px;
+            margin: -30px auto 60px;
+            padding: 8px 12px;
+            background: rgba(23, 31, 27, 0.85);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-glow);
+            border-radius: 40px;
+            display: flex;
+            justify-content: space-around;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .nav-sticky a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-sticky a:hover {
+            color: var(--accent-gold-light);
+            background: rgba(212, 175, 55, 0.15);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 120px;
+        }
+
+        /* Act Divider Titles */
+        .act-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--accent-gold-light);
+            text-align: center;
+            margin: 120px 0 60px;
             position: relative;
+            letter-spacing: 2px;
         }
 
         .act-title::after {
             content: '';
             display: block;
-            width: 70px;
-            height: 3px;
-            background-color: var(--accent-gold);
-            margin: 15px auto 0;
-            border-radius: 2px;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            margin: 20px auto 0;
         }
 
+        /* Day Cards Layout */
         .day-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 18px;
-            padding: 45px;
-            margin-bottom: 50px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 50px;
+            margin-bottom: 60px;
+            box-shadow: var(--shadow-glow);
+            transition: var(--transition-smooth);
+            overflow: hidden;
+        }
+
+        .day-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent-gold), var(--accent-terracotta));
+            opacity: 0.6;
+            transition: var(--transition-smooth);
         }
 
         .day-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+            background: var(--bg-card-hover);
+            transform: translateY(-6px);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+        }
+
+        .day-card:hover::before {
+            opacity: 1;
+            width: 6px;
         }
 
         .day-header {
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 15px;
-            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .day-date {
-            font-size: 0.85rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
             font-weight: 700;
             color: var(--accent-terracotta);
+            letter-spacing: 2px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
         }
 
         .day-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.75rem;
-            color: var(--text-main);
+            font-size: clamp(1.6rem, 3vw, 2.1rem);
+            color: #ffffff;
+            font-weight: 700;
+            line-height: 1.3;
+            width: 100%;
             margin-top: 5px;
         }
 
         p {
-            margin-bottom: 20px;
-            color: var(--text-main);
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            font-weight: 300;
         }
 
         p:last-child {
@@ -182,97 +312,179 @@
         }
 
         strong {
-            color: var(--accent-forest);
+            color: var(--accent-gold-light);
+            font-weight: 600;
         }
 
         em {
             color: var(--accent-terracotta);
+            font-style: italic;
         }
 
+        /* Photo Upload Placeholder Styling */
+        .photo-placeholder {
+            margin: 35px 0 20px;
+            border-radius: 16px;
+            border: 2px dashed rgba(212, 175, 55, 0.3);
+            background: rgba(0, 0, 0, 0.25);
+            padding: 30px 20px;
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .photo-placeholder:hover {
+            border-color: var(--accent-gold);
+            background: rgba(212, 175, 55, 0.04);
+        }
+
+        .photo-placeholder-icon {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .photo-placeholder-caption {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Custom Real Photo Container (Ready for when you upload images) */
         .photo-container {
-            margin: 30px 0 10px;
-            border-radius: 12px;
+            margin: 35px 0 20px;
+            border-radius: 16px;
             overflow: hidden;
-            background-color: #f8f6f0;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
 
         .photo-container img {
             width: 100%;
             height: auto;
-            max-height: 500px;
+            max-height: 550px;
             object-fit: cover;
             display: block;
         }
 
         .photo-caption {
-            padding: 12px 18px;
-            font-size: 0.95rem;
-            color: var(--text-muted);
+            padding: 14px 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
             font-style: italic;
             text-align: center;
-            background-color: #faf8f5;
+            background: rgba(15, 20, 18, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+        /* Epilogue Block */
         .epilogue {
-            background-color: #f3ece1;
-            border-left: 4px solid var(--accent-terracotta);
-            border-radius: 0 12px 12px 0;
-            padding: 40px;
-            margin-top: 90px;
+            background: linear-gradient(135deg, rgba(46, 90, 68, 0.25), rgba(212, 175, 55, 0.1));
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 50px 40px;
+            margin-top: 100px;
             text-align: center;
+            box-shadow: var(--shadow-glow);
+            position: relative;
         }
 
         .epilogue p {
             font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
+            font-size: clamp(1.3rem, 2.5vw, 1.7rem);
             font-style: italic;
-            color: var(--accent-forest);
+            color: var(--accent-gold-light);
+            line-height: 1.6;
             margin: 0;
         }
 
+        /* Footer */
         footer {
             text-align: center;
-            padding: 40px 20px;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-color);
+            padding: 60px 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(10, 14, 12, 0.8);
         }
 
+        footer p {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Mobile Styles */
         @media (max-width: 768px) {
-            h1 { font-size: 2.6rem; }
-            .day-card { padding: 25px; }
-            .act-title { font-size: 1.9rem; }
-            body { font-size: 1.05rem; }
+            .day-card {
+                padding: 30px 22px;
+                border-radius: 18px;
+            }
+            .nav-sticky {
+                width: 90%;
+                font-size: 0.8rem;
+            }
+            .stats-bar {
+                gap: 20px;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Reading Progress Bar -->
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+
+    <!-- Header Section -->
     <header>
-        <div class="header-tag">A 10-Day Journey</div>
+        <div class="hero-badge">A 10-Day Mountain Journey</div>
         <h1>Unnamed Peaks & Wild Trails</h1>
-        <div class="header-sub">Glacier, Grand Teton & Yellowstone | Aug 21 – Aug 30</div>
+        <div class="header-sub">Glacier, Grand Teton & Yellowstone | August 2026</div>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-value">10</span>
+                <span class="stat-label">Days Traveled</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">3</span>
+                <span class="stat-label">National Parks</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">1,500+</span>
+                <span class="stat-label">Miles Driven</span>
+            </div>
+        </div>
     </header>
+
+    <!-- Sticky Navigation -->
+    <nav class="nav-sticky">
+        <a href="#act-1">Glacier</a>
+        <a href="#act-2">Grand Teton</a>
+        <a href="#act-3">Yellowstone</a>
+    </nav>
 
     <div class="container">
 
         <!-- ACT I -->
-        <h2 class="act-title">Act I: Glacier National Park</h2>
+        <h2 id="act-1" class="act-title">Act I: Glacier National Park</h2>
 
         <div class="day-card">
             <div class="day-header">
                 <div class="day-date">August 21</div>
                 <h3 class="day-title">The Unplanned Midnight Run & First Light</h3>
             </div>
-            <p>Some journeys don't begin with a quiet sunrise; they throw you straight into the deep end. Our flight into Bozeman was a forewarning of the wild ride ahead—the plane hit the tarmac so hard it literally bounced back into the air before settling. Shaken but eager, we finally made it to our motel around midnight, only to be hit with an absolute nightmare: the front desk clerk had given our reserved room to someone else. After an exhausting, fruitless argument and a dozen desperate phone calls to fully booked hotels across town, we were stranded in the middle of the night.</p>
-            <p>With options running out, we made a bold split-second call: <em>Let's just drive straight to Glacier right now.</em> At 1:00 AM, we hit the pitch-black highway. About two hours into the drive, out of the utter dark, a massive elk appeared right in front of our passenger side. There was no time to react, no room to steer—just a flash of wide, dark eyes locked onto mine, a sudden slam on the brakes, and an unavoidable impact. Driven by pure adrenaline and assuming we had somehow skimmed past the worst of it, we kept driving into the night.</p>
-            <p>It wasn't until an hour later, pulling into a quiet rest area, that the full reality set in. Under the fluorescent rest-stop lights, we stood stunned: the entire front bumper was completely crushed. Our heavy rental car had swallowed the impact so smoothly we hadn't felt the true weight of the damage. Exhausted, shocked, and bruised by the night's chaos, we reclined the car seats and slept for a few hours. When I opened my eyes, the deep indigo sky was just beginning to outline the giant, dark silhouettes of the mountains ahead.</p>
-            <p>We called customer service, secured a vehicle swap at the Missoula airport, and rolled onto the tarmac just as the sun broke over the horizon. After grabbing McDonald's breakfast and securing an early check-in at our Airbnb around 11:00 AM, we washed off the dust and exhaustion. By noon, refreshed and undefeated, we finally set out toward the gates of Glacier National Park.</p>
+            <p>Some journeys don't begin with a quiet sunrise; they throw you straight into the deep end. Our flight into Bozeman was a forewarning of the wild ride ahead—the plane hit the tarmac so hard it bounced back into the air before settling. Shaken but eager, we made it to our motel around midnight, only to discover our reserved room had been given away. Stranded in the middle of the night after fruitless calls to packed hotels, we made a bold call: <em>Let's drive straight to Glacier right now.</em></p>
+            <p>At 1:00 AM, we hit the pitch-black highway. Two hours in, a massive elk appeared out of the dark right in front of our car. A flash of dark eyes, a slam on the brakes, and an unavoidable impact. Driven by pure adrenaline, we kept pushing forward into the night. It wasn't until an hour later under rest-stop lights that we saw the full reality: our entire front bumper was completely crushed. Exhausted and shocked, we reclined the seats for a few hours until the deep indigo sky outlined the giant mountain silhouettes ahead.</p>
+            <p>We secured a vehicle swap at the Missoula airport just as the sun broke over the horizon. After grabbing breakfast and securing an early check-in around 11:00 AM, we washed off the exhaustion. By noon, refreshed and undefeated, we set out toward the gates of Glacier National Park.</p>
 
-            <div class="photo-container">
-                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Montana Sunrise over mountains">
-                <div class="photo-caption">Refusal to give up — watching sunrise over Missoula after surviving our midnight drive.</div>
+            <div class="photo-placeholder">
+                <span class="photo-placeholder-icon">🏔️</span>
+                <div class="photo-placeholder-caption">Refusal to give up — watching sunrise over Missoula after surviving our midnight drive.</div>
             </div>
         </div>
 
@@ -281,14 +493,13 @@
                 <div class="day-date">August 22</div>
                 <h3 class="day-title">Cedar Canopies, Alpine Waters, and Home-Cooked Comfort</h3>
             </div>
-            <p>After the wild chaos of our arrival, the morning of the 22nd felt like waking up into a completely different world. Passing through the West Entrance, our first stop was the Apgar Visitor Center to stretch our legs and get our bearings. From there, we drove deeper into the forest toward the <strong>Trail of the Cedars</strong>. Stepping onto that raised wooden boardwalk felt like entering a green sanctuary—wrapped in ancient giant red cedars and hemlocks, the forest floor carpeted in lush moss, the air heavy with the rich scent of pine, and the rush of Avalanche Creek echoing nearby.</p>
-            <p>Continuing along the <strong>Avalanche Lake Trail</strong>, the dirt path wound upward along the turquoise gorge. Reaching the lake itself was pure magic. Framed by steep mountain walls, distant waterfalls cascaded down rock faces into crystal-clear water.</p>
-            <p>From there, we drove up toward <strong>Logan Pass</strong>, where the world opened up into endless, sweeping mountain panoramas. Finding a quiet spot amidst the crisp alpine air, we unboxed the lunch we had packed from home—homemade chicken fry and hot, tangy tomato rasam. Eating a comforting, flavorful home-cooked meal high up on the Continental Divide, surrounded by towering granite peaks, made for an unforgettable memory.</p>
-            <p>As late afternoon shifted into evening, we made our way to the shores of <strong>Lake McDonald</strong>. Sitting by the edge of the water as the day gently quieted down was effortlessly pleasant and calm. The sky softened into shades of pastel, casting a warm glow across the mountains. Back at our room, we cracked open a cold pack of local <em>Going-to-the-Sun Golden Ale</em>, taking slow sips from the porch while watching the final light fade over the distant silhouettes. We cooked chicken fry and tomato rasam for dinner and drifted off into a peaceful sleep.</p>
+            <p>Passing through the West Entrance, our first stop was the Apgar Visitor Center before heading toward the <strong>Trail of the Cedars</strong>. Stepping onto that raised wooden boardwalk felt like entering a green sanctuary—wrapped in ancient giant red cedars and hemlocks with the rush of Avalanche Creek echoing nearby.</p>
+            <p>Continuing along the <strong>Avalanche Lake Trail</strong>, the path wound upward along the turquoise gorge until opening up to pure magic: framed by steep mountain walls, distant waterfalls cascaded straight into crystal-clear alpine waters.</p>
+            <p>From there, we drove up toward <strong>Logan Pass</strong>. Finding a quiet spot amidst the crisp alpine air, we unboxed our packed lunch from home—homemade chicken fry and hot, tangy tomato rasam. Eating a comforting home-cooked meal high up on the Continental Divide made for an unforgettable memory. We finished our day resting at <strong>Lake McDonald</strong>, sipping local <em>Going-to-the-Sun Golden Ale</em> from the porch as night fell.</p>
 
-            <div class="photo-container">
-                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80" alt="Lake McDonald Shoreline at Sunset">
-                <div class="photo-caption">Enjoying tomato rasam and chicken fry with a 360° Continental Divide view.</div>
+            <div class="photo-placeholder">
+                <span class="photo-placeholder-icon">🌲</span>
+                <div class="photo-placeholder-caption">Enjoying tomato rasam and chicken fry with a 360° Continental Divide view.</div>
             </div>
         </div>
 
@@ -297,48 +508,45 @@
                 <div class="day-date">August 23</div>
                 <h3 class="day-title">The Road to Heaven, Mountain Goats, and Huckleberry Sweetness</h3>
             </div>
-            <p>We set out along the <strong>Going-to-the-Sun Road</strong>, passing the roaring cascades of McDonald Falls. Driving through the hand-carved stone rock tunnels felt like passing through portals into increasingly grand landscapes. We paused to marvel at the cool mist of the Weeping Wall straight onto the road and caught sight of the elegant cascade of Bird Woman Falls plunging down a distant granite face.</p>
-            <p>Reaching <strong>Logan Pass</strong>, we set off on the trail toward <strong>Hidden Lake Overlook</strong>. The hike felt like walking a wooden stairway straight to heaven—surrounded by vast alpine meadows and towering, snow-dusted peaks. Just as we were taking in the majestic sight of Hidden Lake glowing from high above, two fluffy, magnificent mountain goats stepped onto the trail right ahead of us. They stopped for a quiet moment, observing the crowd before breaking into a nimble run down the path. As soon as the goats started running, everyone on the trail instinctively started running too! It was a hilariously chaotic, shared moment of joy high up on the mountain ridge.</p>
-            <p>Continuing past the pass, we hiked out to the roaring waters of <strong>St. Mary Falls</strong> and <strong>Virginia Falls</strong>, followed by the <strong>Sun Point Nature Trail</strong> overlooking St. Mary Lake. On our way back along the trail, a couple of playful hikers shouted that there was a bear ahead. Panic instantly surged—we turned on our heels and sprinted all the way back toward the parking area! Once we realized it was just a lighthearted prank, we laughed off the adrenaline rush, turned back around, and claimed our spot on the sunlit rock edge to soak in the views.</p>
-            <p>We wrapped up our park loop at the St. Mary Visitor Center watching an educational film about the history of Glacier, and stopped in West Glacier for our very first taste of <strong>huckleberry ice cream</strong>—sweet, tart, and extraordinarily yummy. After picking up ingredients at Smith's grocery, we returned home, grilled for a bit, cooked egg curry, and relaxed in front of the TV before bed.</p>
+            <p>We set out along the <strong>Going-to-the-Sun Road</strong>, passing McDonald Falls and driving through hand-carved stone tunnels into increasingly grand landscapes. Reaching <strong>Logan Pass</strong>, we hiked toward <strong>Hidden Lake Overlook</strong>—a wooden stairway straight into heaven surrounded by snow-dusted peaks.</p>
+            <p>Just as we took in the view, two fluffy mountain goats stepped onto the trail right ahead of us before taking off into a nimble run. As soon as the goats started running, everyone on the trail instinctively started running too! It was a hilariously chaotic, shared moment of pure joy high up on the mountain ridge.</p>
+            <p>After hiking out to <strong>St. Mary Falls</strong>, <strong>Virginia Falls</strong>, and <strong>Sun Point</strong>, we wrapped up our park loop at the visitor center and treated ourselves in West Glacier to our very first taste of <strong>huckleberry ice cream</strong>—sweet, tart, and extraordinarily yummy.</p>
 
-            <div class="photo-container">
-                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80" alt="Hidden Lake Trail at Logan Pass">
-                <div class="photo-caption">The exact moment the mountain goats took off running down the Heavenly Trail!</div>
+            <div class="photo-placeholder">
+                <span class="photo-placeholder-icon">🐐</span>
+                <div class="photo-placeholder-caption">The exact moment the mountain goats took off running down the Heavenly Trail!</div>
             </div>
         </div>
 
         <div class="day-card">
             <div class="day-header">
                 <div class="day-date">August 24</div>
-                <h3 class="day-title">The Emerald Lakes, Bear Country Claps, and the Long Road South</h3>
+                <h3 class="day-title">Emerald Lakes, Bear Country Claps, and the Long Road South</h3>
             </div>
-            <p>Check-out morning marked our final hours in Glacier National Park. We drove across the park to the eastern side, arriving at the historic, Swiss-style <strong>Many Glacier Hotel</strong> on the edge of Swiftcurrent Lake. Setting off on foot for the <strong>Grinnell Lake Hike</strong>, the trail wound past Swiftcurrent Lake and Lake Josephine. Along the way, we crossed a wooden suspension bridge swinging high above a rushing glacial stream—walking across it made us bounce and 'dance' with every step!</p>
-            <p>Reaching <strong>Grinnell Lake</strong> was breathtaking. The water glowed in a striking, opaque turquoise color beneath massive, snow-capped mountain walls. We dipped our bare feet straight into the freezing, icy water—a shocking but invigorating thrill. For the return trek, we took the narrow southern loop trail through dense forest. Not long into the walk, we spotted fresh black bear scat right on the single-file path!</p>
-            <p>Realizing we were sharing a tight trail with a bear nearby, we immediately sprang into action: clapping our hands loudly, singing songs at the top of our lungs, and playing music from my phone as we quickened our pace. Spotting multiple puddles of fresh scat kept our hearts racing until we finally broke out of the tree line and reached safety at the lodge, letting out a massive sigh of relief!</p>
-            <p>Back at Many Glacier Lodge, we celebrated with a hot slice of fresh cheese pizza, enjoyed our packed egg curry and rice at the parking lot, and embarked on the 7.5-hour drive south toward Victor, Idaho. Crossing into Idaho, a wild black bear suddenly emerged from the side of the road, freezing in our headlights before slinking into the dark. By 11:30 PM, we pulled into Victor, grabbed Domino's pizza, and collapsed into bed, exhausted.</p>
+            <p>We drove to the historic <strong>Many Glacier Hotel</strong> on the edge of Swiftcurrent Lake and set off for the <strong>Grinnell Lake Hike</strong>. Along the way, we crossed a wooden suspension bridge swinging high above a rushing glacial stream, bouncing with every step!</p>
+            <p>Reaching <strong>Grinnell Lake</strong> was breathtaking—the water glowed in a striking opaque turquoise beneath massive mountain walls. Dipping our bare feet straight into the icy water was a shocking but invigorating thrill. On the narrow return loop through dense forest, we spotted fresh black bear scat directly on the single-file path.</p>
+            <p>We immediately sprang into action: clapping loudly, singing at the top of our lungs, and playing music from my phone until we safely broke out of the tree line back to the lodge! We celebrated with fresh pizza before embarking on the 7.5-hour drive south toward Victor, Idaho, pulling in late for a well-earned rest.</p>
 
-            <div class="photo-container">
-                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80" alt="Grinnell Lake Turquoise Water">
-                <div class="photo-caption">Freezing glacial waters & 100% worth it — Grinnell Lake.</div>
+            <div class="photo-placeholder">
+                <span class="photo-placeholder-icon">💧</span>
+                <div class="photo-placeholder-caption">Freezing glacial waters & 100% worth it — Grinnell Lake.</div>
             </div>
         </div>
 
         <!-- ACT II -->
-        <h2 class="act-title">Act II: Grand Teton National Park</h2>
+        <h2 id="act-2" class="act-title">Act II: Grand Teton National Park</h2>
 
         <div class="day-card">
             <div class="day-header">
                 <div class="day-date">August 25</div>
                 <h3 class="day-title">Panoramic Peaks, Clear Lakes, and a Mountain Feast</h3>
             </div>
-            <p>We woke up energized and ready to dive into Grand Teton National Park. Our exploration began at <strong>Mormon Row</strong>, where rustic weathered barns stood dramatically framed by the massive Teton Range. We pulled over at Glacier View Turnout, Schwabacher Landing, and Snake River Overlook—standing right where Ansel Adams captured his legendary photograph.</p>
-            <p>After driving up to Jackson Lake Dam, we enjoyed ice cream and iced matcha before navigating up the winding road to <strong>Signal Mountain Summit</strong> for panoramic 360-degree views across the entire valley and shimmering lakes. In the late afternoon, we walked the shore of <strong>String Lake</strong>, a surprising highlight where a short walk led to glassy, shallow waters so clear you could see straight to the bottom.</p>
-            <p>We wrapped up the day strolling through Jackson Village under the iconic elk antler arches, browsing local shops, and soaking in the lively mountain town. Returning home, we cooked a lavish feast of hot Indian vegetarian dishes, filled our bellies, and turned in early to catch sunrise the next morning.</p>
+            <p>We began our exploration at <strong>Mormon Row</strong>, where rustic weathered barns stood dramatically framed by the massive Teton Range. We pulled over at Glacier View Turnout, Schwabacher Landing, and Snake River Overlook—standing right where Ansel Adams captured his legendary photographs.</p>
+            <p>After navigating up to <strong>Signal Mountain Summit</strong> for 360-degree views across the valley, we walked the shore of <strong>String Lake</strong>—a surprising highlight with glassy, shallow waters so clear you could see straight to the bottom. We wrapped up the day strolling through Jackson Village under the iconic elk antler arches before cooking a lavish feast of hot Indian vegetarian dishes.</p>
 
-            <div class="photo-container">
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" alt="Grand Teton Mountains Schwabacher Landing">
-                <div class="photo-caption">Classic Tetons reflection at Schwabacher Landing.</div>
+            <div class="photo-placeholder">
+                <span class="photo-placeholder-icon">🏔️</span>
+                <div class="photo-placeholder-caption">Classic Tetons reflection at Schwabacher Landing.</div>
             </div>
         </div>
 
@@ -347,29 +555,29 @@
                 <div class="day-date">August 26</div>
                 <h3 class="day-title">Sunrise Magic, Mountain Heights, and Fireside Evenings</h3>
             </div>
-            <p>Alarm clocks went off well before dawn, and we arrived at <strong>Oxbow Bend</strong> before light. As the first sunlight hit the Grand Teton, the mountain glowed in soft gold, casting a mirror reflection across the water of the Snake River. After filling up on a hearty breakfast at <strong>Dornan’s</strong>, we took the shuttle boat across <strong>Jenny Lake</strong> and hiked up to <strong>Hidden Falls</strong> and <strong>Inspiration Point</strong> (7,200 ft elevation), taking in sweeping views across the entire expanse of Jenny Lake and Jackson Hole.</p>
-            <p>After enjoying lunch, we drove north toward our resort near West Yellowstone. The mountain weather was cool and refreshing. We settled into our room, brewed hot tea, fired up the grill to cook chicken over open flames, and enjoyed cold <em>Jenny Lake</em> beers while listening to campers around us under the open evening sky. We turned in early, excited for Day 1 in Yellowstone.</p>
+            <p>Alarms went off well before dawn, and we arrived at <strong>Oxbow Bend</strong> just in time. As the first sunlight hit Grand Teton, the peak glowed in soft gold, casting a flawless mirror reflection across the Snake River.</p>
+            <p>After breakfast at Dornan’s, we took the shuttle boat across <strong>Jenny Lake</strong> and hiked up to <strong>Hidden Falls</strong> and <strong>Inspiration Point</strong> (7,200 ft elevation), taking in sweeping views across the entire valley. By late afternoon, we settled into our resort near West Yellowstone, grilling chicken over open flames and sipping cold <em>Jenny Lake</em> beers under the open evening sky.</p>
 
-            <div class="photo-container">
-                <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1200&q=80" alt="Jenny Lake Overlook View">
-                <div class="photo-caption">7,200 feet up overlooking Jenny Lake.</div>
+            <div class="photo-placeholder">
+                <span class="photo-placeholder-icon">🌅</span>
+                <div class="photo-placeholder-caption">7,200 feet up overlooking Jenny Lake.</div>
             </div>
         </div>
 
         <!-- ACT III -->
-        <h2 class="act-title">Act III: Yellowstone National Park</h2>
+        <h2 id="act-3" class="act-title">Act III: Yellowstone National Park</h2>
 
         <div class="day-card">
             <div class="day-header">
                 <div class="day-date">August 27</div>
                 <h3 class="day-title">Steaming Geysers, Turquoise Pools, and Fairy Falls</h3>
             </div>
-            <p>On our first day in Yellowstone, we headed toward Madison Junction, turning along the Madison River where we spotted beautiful wild elk grazing by the riverbank in the morning mist. We explored the Lower Geyser Basin and Midway Geyser Basin, taking the short hike along the <strong>Fairy Falls Trail</strong> up to the Grand Prismatic Overlook. The view from the top was stunning—the hot spring glowing in vivid rings of fire-orange, gold, and deep indigo. In the parking lot, we devoured a delicious packed lunch of homemade <strong>Bagara rice and chicken curry</strong>.</p>
-            <p>Next, we headed to <strong>Old Faithful</strong>, watched the massive eruption shoot water high into the sky, and enjoyed an ice cream. We continued on to explore Black Sand Basin and West Thumb Geyser Basin, marveling at how each geyser basin had its own unique variety. Back at our cute stay, we cracked open local <em>Old Faithful</em> beers, grilled corn and chicken, cooked a hot batch of chicken pulao, and watched the night fade.</p>
+            <p>On our first morning in Yellowstone, wild elk grazed along the Madison Riverbank in the morning mist. We hiked the <strong>Fairy Falls Trail</strong> to the Grand Prismatic Overlook, taking in the hot spring glowing in vivid rings of fire-orange, gold, and deep indigo. Right in the parking lot, we devoured a delicious packed lunch of homemade <strong>Bagara rice and chicken curry</strong>.</p>
+            <p>We visited <strong>Old Faithful</strong> to watch its massive eruption, explored Black Sand Basin and West Thumb Geyser Basin, and returned home to grill corn and chicken while enjoying local <em>Old Faithful</em> beers.</p>
 
-            <div class="photo-container">
-                <img src="https://images.unsplash.com/photo-1533371452382-d45a9da51ad9?auto=format&fit=crop&w=1200&q=80" alt="Grand Prismatic Spring Aerial View">
-                <div class="photo-caption">Bagara rice & chicken curry right next to Grand Prismatic Spring!</div>
+            <div class="photo-placeholder">
+                <span class="photo-placeholder-icon">🌋</span>
+                <div class="photo-placeholder-caption">Bagara rice & chicken curry right next to Grand Prismatic Spring!</div>
             </div>
         </div>
 
@@ -378,12 +586,12 @@
                 <div class="day-date">August 28</div>
                 <h3 class="day-title">Cozy Rain, Endless Bison, and the Best Biryani</h3>
             </div>
-            <p>On our second day in Yellowstone, our single plan was a long drive from the West Entrance out to <strong>Lamar Valley</strong> for wildlife spotting. A soft, steady rain fell throughout the drive, making the weather cozy and peaceful with rain sounds as we navigated past mountain edges. We saw lots and lots of bison roaming across the rolling green hills and crossing the roads throughout the entire day.</p>
-            <p>Returning home by evening, we cooked <strong>Chicken Dum Biryani</strong> from scratch. Eating what turned out to be the best Biryani of the trip, we talked about how time had flown by so fast and realized tomorrow would be our final day in the park. Full and content, we had a sound sleep.</p>
+            <p>A soft, steady rain fell throughout our long drive out to <strong>Lamar Valley</strong>. Endless herds of bison roamed across rolling green hills and crossed the roads right in front of us throughout the entire day.</p>
+            <p>Returning home by evening, we cooked <strong>Chicken Dum Biryani</strong> from scratch. Eating what turned out to be the absolute best Biryani of the trip, we talked about how fast time had flown, full and content before a sound sleep.</p>
 
-            <div class="photo-container">
-                <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1200&q=80" alt="Lamar Valley Bison Herd">
-                <div class="photo-caption">Bison traffic jams in cozy, rainy Lamar Valley.</div>
+            <div class="photo-placeholder">
+                <span class="photo-placeholder-icon">🦬</span>
+                <div class="photo-placeholder-caption">Bison traffic jams in cozy, rainy Lamar Valley.</div>
             </div>
         </div>
 
@@ -392,13 +600,13 @@
                 <div class="day-date">August 29–30</div>
                 <h3 class="day-title">The Grand Finale, Roaring Falls, and Sunset Farewell</h3>
             </div>
-            <p>Our final day in Yellowstone began at the <strong>Grand Canyon of the Yellowstone</strong>. Standing at <strong>Artist Point</strong>, the view was breathtaking, and we even saw an artist painting the scene on canvas in real time. We walked to the <strong>Brink of the Upper Falls</strong>, standing right up close to the roaring water—the speed and sound were gigantic, feeling nothing short of Niagara Falls. Right there, we unpacked our leftover <strong>Biryani for lunch</strong> in Yellowstone!</p>
-            <p>Continuing through Hayden Valley, we visited Mud Volcano, Norris Geyser Basin, and <strong>Mammoth Hot Springs</strong>, taking in the unique landscape as on-and-off rain showers drifted through. We reached the historic <strong>Roosevelt Arch</strong> at the North Entrance and stopped at a local shop for a <strong>huckleberry croissant jam</strong>—the absolute best sweet treat of the trip.</p>
-            <p>Exiting through the North Entrance around sunset, the drive toward Livingston was beyond words—a winding creek hugging one side of the road with cozy homes beside it under golden light. In Livingston, we enjoyed pineapple chicken fried rice (the best Thai fried rice we had ever tasted) before driving to our motel in Belgrade. With mixed emotions, we packed up for our early morning flight back home, completely refreshed after a much-needed break immersed in nature.</p>
+            <p>Our final day began at the <strong>Grand Canyon of the Yellowstone</strong>. Standing at <strong>Artist Point</strong>, the view was breathtaking. We walked down to the <strong>Brink of the Upper Falls</strong>, standing right beside the roaring, thunderous water while enjoying our leftover Biryani for lunch!</p>
+            <p>We continued through Hayden Valley, Mud Volcano, and Mammoth Hot Springs before reaching the historic <strong>Roosevelt Arch</strong>. Stopping at a local shop, we treated ourselves to a <strong>huckleberry croissant jam</strong>—the single best sweet treat of the trip.</p>
+            <p>Exiting through the North Entrance around sunset, we took in a winding creek route under golden light, enjoyed Thai fried rice in Livingston, and packed up for our flight home—completely refreshed after an unforgettable journey immersed in nature.</p>
 
-            <div class="photo-container">
-                <img src="https://images.unsplash.com/photo-1563299796-b729d0af54a5?auto=format&fit=crop&w=1200&q=80" alt="Roosevelt Arch Yellowstone">
-                <div class="photo-caption">Eating Biryani at the Brink of the Upper Falls — untamed memories forever.</div>
+            <div class="photo-placeholder">
+                <span class="photo-placeholder-icon">🏛️</span>
+                <div class="photo-placeholder-caption">Eating Biryani at the Brink of the Upper Falls — untamed memories forever.</div>
             </div>
         </div>
 
@@ -413,5 +621,16 @@
         <p>Crafted with warmth & memories • August 2026</p>
     </footer>
 
+    <!-- Reading Progress Indicator Script -->
+    <script>
+        window.onscroll = function() { updateProgress() };
+
+        function updateProgress() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+        }
+    </script>
 </body>
 </html>
