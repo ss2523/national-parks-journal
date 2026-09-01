@@ -54,7 +54,6 @@
             --accent-gold-light: #f3e5ab;
             --accent-terracotta: #d97757;
             --accent-emerald: #2e5a44;
-            --accent-forest: #1b3b2b;
             --shadow-glow: 0 20px 50px rgba(0, 0, 0, 0.5);
             --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -196,14 +195,15 @@
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 600;
-            padding: 8px 16px;
+            padding: 8px 18px;
             border-radius: 20px;
             transition: var(--transition-smooth);
         }
 
-        .nav-sticky a:hover {
+        .nav-sticky a:hover, .nav-sticky a.active {
             color: var(--accent-gold-light);
-            background: rgba(212, 175, 55, 0.15);
+            background: rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
         }
 
         /* Main Container */
@@ -222,6 +222,7 @@
             margin: 120px 0 60px;
             position: relative;
             letter-spacing: 2px;
+            scroll-margin-top: 100px;
         }
 
         .act-title::after {
@@ -233,7 +234,7 @@
             margin: 20px auto 0;
         }
 
-        /* Day Cards Layout */
+        /* Day Cards Layout & Animations */
         .day-card {
             position: relative;
             background: var(--bg-card);
@@ -245,6 +246,15 @@
             box-shadow: var(--shadow-glow);
             transition: var(--transition-smooth);
             overflow: hidden;
+            
+            /* Fade-in scroll animation setup */
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .day-card.reveal {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .day-card::before {
@@ -351,13 +361,15 @@
             font-style: italic;
         }
 
-        /* Custom Real Photo Container (Ready for when you upload images) */
+        /* Interactive Photo Container with Zoom Hover Effect */
         .photo-container {
             margin: 35px 0 20px;
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid var(--border-glow);
             box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            cursor: pointer;
+            position: relative;
         }
 
         .photo-container img {
@@ -366,6 +378,11 @@
             max-height: 550px;
             object-fit: cover;
             display: block;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .photo-container:hover img {
+            transform: scale(1.03);
         }
 
         .photo-caption {
@@ -378,6 +395,97 @@
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+        /* Full-Screen Image Lightbox Modal */
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        #lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #lightbox-img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            border: 1px solid var(--border-glow);
+        }
+
+        #lightbox-caption {
+            margin-top: 20px;
+            color: var(--text-primary);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: var(--text-secondary);
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .lightbox-close:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Back to Top Floating Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(23, 31, 27, 0.9);
+            border: 1px solid var(--border-glow);
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 900;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-glow);
+        }
+
+        #back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #back-to-top:hover {
+            background: var(--accent-gold);
+            color: var(--bg-main);
+            transform: translateY(-4px);
+        }
+
         /* Epilogue Block */
         .epilogue {
             background: linear-gradient(135deg, rgba(46, 90, 68, 0.25), rgba(212, 175, 55, 0.1));
@@ -387,7 +495,6 @@
             margin-top: 100px;
             text-align: center;
             box-shadow: var(--shadow-glow);
-            position: relative;
         }
 
         .epilogue p {
@@ -463,9 +570,9 @@
 
     <!-- Sticky Navigation -->
     <nav class="nav-sticky">
-        <a href="#act-1">Glacier</a>
-        <a href="#act-2">Grand Teton</a>
-        <a href="#act-3">Yellowstone</a>
+        <a href="#act-1" class="nav-link">Glacier</a>
+        <a href="#act-2" class="nav-link">Grand Teton</a>
+        <a href="#act-3" class="nav-link">Yellowstone</a>
     </nav>
 
     <div class="container">
@@ -617,20 +724,107 @@
 
     </div>
 
+    <!-- Lightbox Modal -->
+    <div id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Enlarged view">
+        <div id="lightbox-caption"></div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Back to top">↑</button>
+
     <footer>
         <p>Crafted with warmth & memories • August 2026</p>
     </footer>
 
-    <!-- Reading Progress Indicator Script -->
+    <!-- Interactive Scripts -->
     <script>
-        window.onscroll = function() { updateProgress() };
-
-        function updateProgress() {
-            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            var scrolled = (winScroll / height) * 100;
+        // Reading Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
             document.getElementById("progress-bar").style.width = scrolled + "%";
-        }
+
+            // Back to Top button visibility
+            const btt = document.getElementById('back-to-top');
+            if (winScroll > 600) {
+                btt.classList.add('visible');
+            } else {
+                btt.classList.remove('visible');
+            }
+        });
+
+        // Scroll Back to Top
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Intersection Observer for Scroll Animations
+        const cards = document.querySelectorAll('.day-card');
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const cardObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach(card => cardObserver.observe(card));
+
+        // Active Navigation Highlighting as you scroll
+        const acts = document.querySelectorAll('.act-title');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let currentAct = '';
+            acts.forEach(act => {
+                const actTop = act.offsetTop - 150;
+                if (window.scrollY >= actTop) {
+                    currentAct = act.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentAct}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Lightbox Modal Functionality (Triggers on real uploaded photos)
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        document.addEventListener('click', (e) => {
+            const container = e.target.closest('.photo-container');
+            if (container) {
+                const img = container.querySelector('img');
+                const caption = container.querySelector('.photo-caption');
+                if (img) {
+                    lightboxImg.src = img.src;
+                    lightboxCaption.innerText = caption ? caption.innerText : '';
+                    lightbox.classList.add('active');
+                }
+            }
+        });
+
+        closeBtn.addEventListener('click', () => lightbox.classList.remove('active'));
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) lightbox.classList.remove('active');
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') lightbox.classList.remove('active');
+        });
     </script>
 </body>
 </html>
